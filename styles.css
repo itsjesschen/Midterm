@@ -1,0 +1,71 @@
+ul, li {
+	margin:0;
+	padding:0;
+	list-style-type: none;
+}
+h1 {
+	color: #8A0808;
+}
+body {
+	font-family: arial;
+	background-color:#151515;
+}
+
+a:link {
+	color:white;
+}
+#map , #tweetdataview { 
+	float:left;
+	height: 500px;
+	width:50%;
+	border-color:#8A0808;
+}
+#tweets {
+	float:right;
+	background-color: #151515;
+	color: white;
+	overflow:scroll;
+	height: 500px;
+	width: 50%;
+}
+
+#tweets {
+	width:46%;
+	margin:auto;
+}
+#tweets img {
+	margin:auto;
+	display: block;
+}
+
+#tweets ul {
+	margin-top: 20px;
+	font-size:11px;
+}
+
+#tweets ul li {
+	cursor: pointer;
+	margin-bottom: 7px;
+	padding:10px;
+}
+
+#tweets ul li:nth-child(2n), #tweetdataview p:nth-child(2n) {
+	background-color:#8A0808;
+}
+#tweetdataview :nth-child(2n){
+	background-color:#1C1C1C;
+}
+#tweets ul li img {
+	float:left;
+	margin-right: 5px;
+}
+
+#tweetdataview {
+	clear:left;
+	float:left;
+	height: 300px;
+	width: 100%;
+	color: white;
+	background-color: #151515;
+	overflow:scroll;
+}

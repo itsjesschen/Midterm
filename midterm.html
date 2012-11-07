@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Google Maps with Geocoding and jQuery</title>
+	<img src="http://i512.photobucket.com/albums/t326/musethar79/BANNERMUSE.gif" style="align:right;margin:auto;"/>
+</br>
+	<link rel="stylesheet" href="styles.css">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+</head>
+<body>
+	<div id= 'tweets' style="margin:10px; text-align:right; width = 300px"></div>
+	<div id= "map"></div>
+	<div id= 'tweetdataview'></div>
+	<script type="text/template" id="twitter-data">
+		<div class="twitterdatatemplate">
+			<div class = "ConcertData">
+			<h2 style="text-align:center;">{{ city_name }}</h2>
+			<p>Performer: <span>{{performers.performer.name }}</span></p>
+			<p>{{ performers.performer.short_bio }}</p>
+			<p>Performing Venue: {{venue_name}} , {{venue_address}}</p>
+			<p>Start Time: {{start_time}}</p>
+			<a href={{performers.performer.url}}>Click here for Event</a>
+			</div>
+		</div>
+	</script>
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script src="main.js"></script>
+	<script src="handlebars-1.0.rc.1.js"></script>
+	<script>
+		var myMain = new Main();
+		var script = document.createElement('script');
+		script.src = "http://api.eventful.com/json/events/search?c=music&app_key=xwZCpsdnqTWjzHvq&page_number=1&sort_order=popularity&date=Future&keywords=muse&callback=processJSONP";
+		document.body.appendChild(script);
+
+		function processJSONP(data) {
+			var events = data.events.event;
+			//console.log(events);
+			var curEvent;
+			for( var i = 0; i < events.length ; i++){
+				curEvent = events[i];
+				myMain.addPointToMap(curEvent.latitude, curEvent.longitude, curEvent.city_name);
+			}
+			myMain.loadEventData(data);
+		}
+		myMain.LoadTweets();
+	</script> 
+</body>
+</html>
